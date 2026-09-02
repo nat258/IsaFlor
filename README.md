@@ -93,9 +93,4 @@ Este proyecto está en desarrollo como una interfaz web estática para una tiend
 
 Proyecto desarrollado por Natali.
 
-## Siguiente mejora sugerida
 
-- Integrar backend con PHP, Node.js o Java
-- Conectar con base de datos para usuarios y productos
-- Agregar carrito funcional y pagos
-- Mejorar la estructura del diseño con componentes reutilizables
