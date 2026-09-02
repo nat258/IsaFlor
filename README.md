@@ -91,6 +91,6 @@ Este proyecto está en desarrollo como una interfaz web estática para una tiend
 
 ## Autor
 
-Proyecto desarrollado por Natali.
+Proyecto desarrollado por Nataly Arriaza y Karol Carrasco 
 
 
