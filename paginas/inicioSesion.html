@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>IsaFlor | Inicio de sesión</title>
+    <link rel="stylesheet" href="../Style/estilos.css">
 </head>
 <body>
-    
+    <header class="encabezado-principal">
+        <div class="contenedor-encabezado">
+            <h1>IsaFlor</h1>
+            <nav class="menu-navegacion" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="inicioSesion.html" class="activo">Iniciar sesión</a></li>
+                    <li><a href="VistaCliente/registro.html">Registro cliente</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contenedor-principal">
+        <section class="tarjeta formulario-seccion">
+            <h2>Inicio de sesión</h2>
+            <form id="form-login" novalidate>
+                <div class="campo">
+                    <label for="login-correo">Correo electrónico</label>
+                    <input type="email" id="login-correo" name="correo" maxlength="100" required>
+                    <small class="error" data-error-for="login-correo"></small>
+                </div>
+
+                <div class="campo">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" name="password" minlength="4" maxlength="10" required>
+                    <small class="error" data-error-for="login-password"></small>
+                </div>
+
+                <button type="submit" class="boton">Ingresar</button>
+                <p id="mensaje-login" class="mensaje-exito"></p>
+            </form>
+        </section>
+    </main>
+
+    <script src="../scripts/script.js"></script>
 </body>
 </html>

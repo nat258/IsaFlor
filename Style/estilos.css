@@ -1,0 +1,240 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primario: #7a284b;
+    --color-primario-suave: #f8d7da;
+    --color-fondo: #fffafc;
+    --color-texto: #2f2430;
+    --color-borde: #e8c7d1;
+    --color-error: #c62828;
+    --color-exito: #2e7d32;
+    --color-alerta: #fff3cd;
+    --color-alerta-borde: #d39e00;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.encabezado-principal {
+    background-color: var(--color-primario-suave);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.contenedor-encabezado,
+.contenedor-principal {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contenedor-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.encabezado-principal h1 {
+    margin: 0;
+    color: var(--color-primario);
+    font-size: 2rem;
+}
+
+.menu-navegacion ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-navegacion a {
+    text-decoration: none;
+    color: var(--color-primario);
+    font-weight: bold;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+}
+
+.menu-navegacion a:hover,
+.menu-navegacion a.activo {
+    background-color: rgba(122, 40, 75, 0.12);
+}
+
+.contenedor-principal {
+    padding: 2rem 1rem 3rem;
+}
+
+.tarjeta {
+    background-color: #ffffff;
+    border: 1px solid var(--color-borde);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 20px rgba(122, 40, 75, 0.08);
+}
+
+.hero,
+.formulario-seccion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.boton {
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-primario);
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.boton:hover {
+    opacity: 0.92;
+}
+
+.boton-secundario {
+    background-color: #b56487;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #c9b3bc;
+    border-radius: 10px;
+    font: inherit;
+    background-color: #fff;
+}
+
+.campo textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.grid-formulario {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.campo-completo {
+    grid-column: 1 / -1;
+}
+
+.error {
+    min-height: 1rem;
+    color: var(--color-error);
+    font-size: 0.9rem;
+}
+
+.input-error {
+    border-color: var(--color-error) !important;
+    background-color: #fff5f5;
+}
+
+.mensaje-exito {
+    margin-top: 1rem;
+    color: var(--color-exito);
+    font-weight: bold;
+}
+
+.alerta-stock {
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    background-color: var(--color-alerta);
+    border: 1px solid var(--color-alerta-borde);
+    color: #7a4d00;
+    margin-bottom: 1rem;
+}
+
+.oculto {
+    display: none;
+}
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.producto-card {
+    border: 1px solid var(--color-borde);
+    border-radius: 14px;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.producto-card h3 {
+    margin-top: 0;
+}
+
+.tabla-carrito {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.tabla-carrito th,
+.tabla-carrito td {
+    border-bottom: 1px solid var(--color-borde);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.tabla-carrito input[type="number"] {
+    width: 80px;
+    padding: 0.4rem;
+}
+
+.resumen-carrito {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .contenedor-encabezado {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-navegacion ul {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .grid-formulario {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-completo {
+        grid-column: auto;
+    }
+}
