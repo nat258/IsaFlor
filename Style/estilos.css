@@ -219,6 +219,18 @@ body {
     font-weight: bold;
 }
 
+.logo {
+    width: 150px;
+    height: auto;
+    border-radius: 40px;
+}
+
+.banner {
+    width: 100px;
+    height: auto;
+    
+}
+
 @media (max-width: 768px) {
     .contenedor-encabezado {
         flex-direction: column;
@@ -237,4 +249,7 @@ body {
     .campo-completo {
         grid-column: auto;
     }
+
+    
 }
+
