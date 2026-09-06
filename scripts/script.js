@@ -1,6 +1,39 @@
 const DOMINIOS_PERMITIDOS = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
 const STORAGE_CARRITO = 'isaflor-carrito';
 const STORAGE_PRODUCTOS = 'isaflor-productos';
+const URL_SCRIPT = new URL(document.currentScript.src, document.baseURI);
+
+async function cargarComponente(ruta) {
+    const respuesta = await fetch(new URL('../componentes/' + ruta, URL_SCRIPT));
+    if (!respuesta.ok) {
+        throw new Error('No se pudo cargar el componente: ' + ruta);
+    }
+    return respuesta.text();
+}
+
+async function inicializarComponentes() {
+    try {
+        const [headerHtml, footerHtml] = await Promise.all([
+            cargarComponente('header.html'),
+            cargarComponente('footer.html')
+        ]);
+
+        const headerActual = document.querySelector('header');
+        const headerNuevo = document.createRange().createContextualFragment(headerHtml).firstElementChild;
+        const raiz = new URL('../', URL_SCRIPT);
+
+        headerNuevo.querySelectorAll('[data-route]').forEach((enlace) => {
+            enlace.href = new URL(enlace.dataset.route, raiz).href;
+        });
+        headerNuevo.querySelector('[data-src]').src = new URL('imagenes/logo.webp', raiz).href;
+        headerActual?.replaceWith(headerNuevo);
+
+        const footer = document.createRange().createContextualFragment(footerHtml).firstElementChild;
+        document.body.appendChild(footer);
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 const regionesComunas = {
     'Región Metropolitana': ['Santiago', 'Puente Alto', 'Maipú', 'La Florida'],
@@ -527,6 +560,7 @@ function renderizarCarrito() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    inicializarComponentes();
     inicializarLogin();
     inicializarContacto();
     inicializarFormulariosUsuario();
