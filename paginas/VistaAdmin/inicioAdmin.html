@@ -1,35 +1,47 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IsaFlor | Inicio admin</title>
-    <link rel="stylesheet" href="../../Style/estilos.css">
-</head>
-<body>
-    <header class="encabezado-principal">
-        <div class="contenedor-encabezado">
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IsaFlor | Inicio admin</title>
+        <link rel="stylesheet" href="../../Style/estilos.css">
+    </head>
+    <body>
+        <header class="encabezado-principal">
+            <div class="contenedor-encabezado">
 
-            <img class="logo" src="../../../imagenes/logo.webp" alt="Logo de IsaFlor">
+                <img class="logo" src="../../../imagenes/logo.webp" alt="Logo de IsaFlor">
 
-            <nav class="menu-navegacion" aria-label="Navegación administrador">
-                <ul>
-                    <li><a href="inicioAdmin.html" class="activo">Inicio</a></li>
-                    <li><a href="mostrarUsuarios.html">Usuarios</a></li>
-                    <li><a href="nuevoProducto.html">Producto</a></li>
-                    <li><a href="nuevoUsuario.html">Nuevo usuario</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+                <nav class="menu-navegacion" aria-label="Navegación administrador">
 
-    <main class="contenedor-principal">
-        <section class="tarjeta">
-            <h2>Panel administrativo</h2>
-            <p>Gestiona usuarios y productos desde esta sección.</p>
-        </section>
-    </main>
+                        <a href="inicioAdmin.html" class="activo">Inicio</a>
+                        <a href="mostrarUsuarios.html">Usuarios</a>
+                        <a href="nuevoProducto.html">Producto</a>
+                        <a href="nuevoUsuario.html">Nuevo usuario</a>
+                    
+                </nav>
+            </div>
+        </header>
 
-    <script src="../../scripts/script.js"></script>
-</body>
-</html>
+        <main class="contenedor-principal">
+            <section class="tarjeta">
+                <h2>Panel administrativo</h2>
+                <p>Gestiona usuarios y productos desde esta sección.</p>
+                
+                <div class="contenedor-calugas">
+                    <div class="caluga">
+                        <h3> Usuarios </h3>
+                        <p> Usuarios Registrados</p>
+                        <a href="mostrarUsuarios.html" class="boton">Ingresar</a>
+                    </div>
+                    <div class="caluga">
+                        <h3>Nuevo Usuario </h3>
+                        <p>Registrar Nuevo Usuario</p>
+                        <a href="nuevoUsuario.html" class="boton">Ingresar</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script src="../../scripts/script.js"></script>
+    </body>
+    </html>
