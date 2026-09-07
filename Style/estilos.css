@@ -76,13 +76,11 @@ body {
     font-size: 2rem;
 }
 
-.menu-navegacion ul {
-    list-style: none;
+.menu-navegacion {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    margin: 0;
-    padding: 0;
+    align-items: center;
 }
 
 .menu-navegacion a {
@@ -96,6 +94,10 @@ body {
 .menu-navegacion a:hover,
 .menu-navegacion a.activo {
     background-color: rgba(122, 40, 75, 0.12);
+}
+
+.icono-carrito {
+    font-size: 1.4rem;
 }
 
 .contenedor-principal {
@@ -116,12 +118,28 @@ body {
     margin: 0 auto;
 }
 
+.hero h2{
+    text-align: center;
+    font-family: "Lobster", cursive;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 300;
+}
+
+.hero p{
+
+    text-align: center;
+    font-family: "Lobster",cursive;
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 100;
+}
 .acciones {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1rem;
 }
+
 
 .boton {
     display: inline-block;
@@ -255,7 +273,7 @@ body {
     border-radius: 40px;
 }
 
-.banner {
+.portada {
     display: block;
     width: 100%;
     max-width: 100%;
@@ -263,13 +281,76 @@ body {
     border-radius: 12px;
 }
 
+.contenedor-calugas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.caluga {
+    background-color: #fff;
+    border: 1px solid var(--color-borde);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(122, 40, 75, 0.08);
+}
+
+.caluga h3 {
+    margin-top: 0;
+    font-size: clamp(20px, 2.5vw, 28px);
+}
+
+.caluga p {
+    margin-bottom: 1.5rem;
+}
+
+.producto-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+} 
+
+.tabla-responsiva{
+    width:100%;
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+.tabla-usuarios{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    min-width: 1000px;
+}
+
+.tabla-usuarios th, 
+.tabla-usuarios td{
+    padding:  1rem;
+    border-bottom: 1px solid var(--color-borde);
+    text-align: left;
+    white-space: nowrap; 
+}
+.tabla-usuarios th{
+    background-color: var(--color-primario-suave);
+    color: var(--color-primario);
+    font-weight: bold;
+}
+.tabla-usuarios tbody{
+    background-color: #fffafc;
+}
+
 @media (max-width: 768px) {
+
     .contenedor-encabezado {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
-    .menu-navegacion ul {
+    .menu-navegacion {
         flex-direction: column;
         gap: 0.75rem;
     }
@@ -282,6 +363,10 @@ body {
         grid-column: auto;
     }
 
-    
+    .contenedor-calugas {
+        grid-template-columns: 1fr;
+    }
 }
+
+    
 
