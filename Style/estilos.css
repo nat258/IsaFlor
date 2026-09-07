@@ -47,6 +47,41 @@ body {
     text-decoration: underline;
 }
 
+.redes-sociales {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.redes-sociales a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.redes-sociales a:hover {
+    text-decoration: underline;
+}
+
+.icono-red-social {
+    width: 1.35rem;
+    height: 1.35rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+.imagen-red-social {
+    object-fit: contain;
+}
+
 .pie-pagina p {
     margin: 0;
 }
@@ -105,11 +140,19 @@ body {
 }
 
 .tarjeta {
-    background-color: #ffffff;
+    background-color: #F4F0EC;
     border: 1px solid var(--color-borde);
     border-radius: 16px;
     padding: 1.5rem;
     box-shadow: 0 8px 20px rgba(122, 40, 75, 0.08);
+}
+
+.imagen-blog {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: 1.5rem auto 0;
 }
 
 .hero,
@@ -343,14 +386,58 @@ body {
     background-color: #fffafc;
 }
 
+.mensaje-exito {
+    color: var(--color-exito);
+    font-weight: bold;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.boton-menu {
+    display: none;
+    border: none;
+    background: none;
+    color: var(--color-primario);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
 
-    .contenedor-encabezado {
+     .contenedor-encabezado {
         flex-direction: column;
         align-items: center;
     }
 
     .menu-navegacion {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .boton-menu {
+        display: block;
+        margin: 0;
+    }
+
+    .menu-navegacion ul {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        margin: 0;
+        list-style: none;
+        background-color: var(--color-primario-suave);
+        text-align: center;
+    }
+
+    .menu-navegacion ul.mostrar {
+        display: flex;
         flex-direction: column;
         gap: 0.75rem;
     }
