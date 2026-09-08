@@ -13,21 +13,32 @@ async function cargarComponente(ruta) {
 async function inicializarComponentes() {
     try {
         const [headerHtml, footerHtml] = await Promise.all([
-            cargarComponente('header.html'), cargarComponente('footer.html')
+            cargarComponente('header.html'),
+            cargarComponente('footer.html')
         ]);
-        const headerActual = document.querySelector('header');
-        const headerNuevo = document.createRange().createContextualFragment(headerHtml).firstElementChild;
+
         const raiz = new URL('../', URL_SCRIPT);
 
-        headerNuevo.querySelectorAll('[data-route]').forEach((enlace) => {
-            enlace.href = new URL(enlace.dataset.route, raiz).href;
-        });
+        if (!document.querySelector('header')) {
+            const header = document.createRange()
+                .createContextualFragment(headerHtml)
+                .firstElementChild;
+            header.querySelectorAll('[data-route]').forEach((enlace) => {
+                enlace.href = new URL(enlace.dataset.route, raiz).href;
+            });
+            const logo = header.querySelector('[data-src]');
+            if (logo) {
+                logo.src = new URL('imagenes/logo.webp', raiz).href;
+            }
+            document.body.prepend(header);
+        }
+        if (!document.querySelector('footer')) {
+            const footer = document.createRange()
+                .createContextualFragment(footerHtml)
+                .firstElementChild;
 
-        headerNuevo.querySelector('[data-src]').src = new URL('imagenes/logo.webp', raiz).href;
-        headerActual?.replaceWith(headerNuevo);
-
-        const footer = document.createRange().createContextualFragment(footerHtml).firstElementChild;
-        document.body.appendChild(footer);
+            document.body.appendChild(footer);
+        }
     } catch (error) {
         console.error(error);
     }
@@ -61,8 +72,8 @@ function validarRun(run) {
     const valor = normalizarTexto(run).toUpperCase();
     if (!valor || valor.length < 7 || valor.length > 9 || !/^[0-9K]+$/.test(valor)) return false;
 
-    const cuerpo = valor.slice(0,-1);
-    const digitoVerificador = valor.slice(-1);
+    const cuerpo = valor.slice(0, -1);
+    const dv = valor.slice(-1);
     if (!/^\d+$/.test(cuerpo)) return false;
 
     let suma = 0;
@@ -72,15 +83,9 @@ function validarRun(run) {
         suma += Number(cuerpo[i]) * multiplicador;
         multiplicador = multiplicador === 7 ? 2 : multiplicador + 1;
     }
-
     const resto = 11 - (suma % 11);
-    let digitoEsperado;
-
-    if (resto === 11) digitoEsperado = '0';
-    else if (resto === 10) digitoEsperado = 'K';
-    else digitoEsperado = String(resto);
-
-    return digitoEsperado === digitoVerificador;
+    const dvEsperado = resto === 11 ? '0' : resto === 10 ? 'K' : String(resto);
+    return dvEsperado === dv;
 }
 
 function mostrarError(inputId, mensaje) {
@@ -137,7 +142,11 @@ function inicializarLogin() {
         mensaje.textContent = 'Inicio de sesion validado correctamente.';
         const botonPresionado = event.submitter;
 
-        if (botonPresionado && botonPresionado.id === 'btn-admin') {
+        if (document.activeElement.id === 'btn-cliente') {
+            window.location.href = 'VistaCliente/inicioCliente.html';
+        }
+
+        if (document.activeElement.id === 'btn-admin') {
             window.location.href = 'VistaAdmin/inicioAdmin.html';
         }
     });
@@ -284,7 +293,7 @@ function editarUsuario(run) {
     if (!usuario) return;
 
     localStorage.setItem('isaflor-usuario-editar', JSON.stringify(usuario));
-    window.location.href = 'nuevoUsuario.html?editar=' + encodeURIComponent(run);
+    window.location.href = 'nuevoCliente.html?editar=' + encodeURIComponent(run);
 }
 
 function validarFormularioUsuario(form, mensajeId) {
