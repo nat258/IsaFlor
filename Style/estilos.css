@@ -147,6 +147,22 @@ body {
     box-shadow: 0 8px 20px rgba(122, 40, 75, 0.08);
 }
 
+.usuario-activo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: var(--color-primario);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.icono-usuario {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
 .imagen-blog {
     display: block;
     width: 100%;
@@ -332,7 +348,7 @@ body {
 }
 
 .caluga {
-    background-color: #fff;
+    background-color: #98BF64;
     border: 1px solid var(--color-borde);
     border-radius: 16px;
     padding: 1.5rem;
