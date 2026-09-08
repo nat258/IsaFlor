@@ -164,8 +164,11 @@ function inicializarContacto() {
             valido = false;
         }
 
-        if (correo && (correo.length > 100 || !correoValido(correo))) {
-            mostrarError('contacto-correo','El correo debe tener un dominio permitido.');
+        if (!correo) {
+            mostrarError('contacto-correo','El correo es obligatorio.');
+            valido = false;
+        } else if (correo.length > 100 || !correoValido(correo)) {
+            mostrarError('contacto-correo','Ingresa un correo valido con dominio permitido.');
             valido = false;
         }
 
@@ -296,8 +299,11 @@ function validarFormularioUsuario(form, mensajeId) {
         const nombre = form.querySelector('#nombre').value.trim();
         const apellidos = form.querySelector('#apellidos').value.trim();
         const correo = form.querySelector('#correo').value.trim();
+        const passwordInput = form.querySelector('#password');
+        const password = passwordInput ? passwordInput.value.trim() : '';
         const fechaNacimiento = form.querySelector('#fechaNacimiento')?.value || '';
-        const tipoUsuario = form.querySelector('#tipoUsuario').value;
+        const tipoUsuarioInput = form.querySelector('#tipoUsuario');
+        const tipoUsuario = tipoUsuarioInput ? tipoUsuarioInput.value : '';
         const region = form.querySelector('#region').value;
         const comuna = form.querySelector('#comuna').value;
         const direccion = form.querySelector('#direccion').value.trim();
@@ -334,7 +340,15 @@ function validarFormularioUsuario(form, mensajeId) {
             valido = false;
         }
 
-        if (!tipoUsuario) {
+        if (passwordInput && !password) {
+            mostrarError('password','La clave es obligatoria.');
+            valido = false;
+        } else if (passwordInput && (password.length < 4 || password.length > 10)) {
+            mostrarError('password','La clave debe tener entre 4 y 10 caracteres.');
+            valido = false;
+        }
+
+        if (tipoUsuarioInput && !tipoUsuario) {
             mostrarError('tipoUsuario','Debes seleccionar un tipo de usuario.');
             valido = false;
         }
@@ -364,7 +378,7 @@ function validarFormularioUsuario(form, mensajeId) {
             return;
         }
 
-        const nuevoUsuario = {run,nombre,apellidos,correo,fechaNacimiento,tipoUsuario,region,comuna,direccion};
+        const nuevoUsuario = {run,nombre,apellidos,correo,password,fechaNacimiento,tipoUsuario,region,comuna,direccion};
         const usuarios = obtenerUsuarios();
         const parametroEditar = new URLSearchParams(window.location.search).get('editar');
 

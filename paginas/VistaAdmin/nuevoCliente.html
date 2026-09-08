@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IsaFlor | Registro cliente</title>
+    <title>IsaFlor | Nuevo usuario</title>
     <link rel="stylesheet" href="../../Style/estilos.css">
 </head>
 <body>
-    <header ></header>
+    <header></header>
 
     <main class="contenedor-principal">
         <section class="tarjeta formulario-seccion">
-            <h2>Registro de usuario</h2>
-            <form id="form-registro-cliente" class="form-usuario" novalidate>
+            <h2>Registrate aqui</h2>
+            <form id="form-nuevo-usuario" class="form-usuario" novalidate>
                 <div class="grid-formulario">
                     <div class="campo">
-                        <label for="run">RUN</label>
+                        <label for="run">RUT</label>
                         <input type="text" id="run" name="run" maxlength="9" required>
                         <small class="error" data-error-for="run"></small>
                     </div>
@@ -33,24 +33,13 @@
                     </div>
 
                     <div class="campo campo-completo">
-                        <label for="correo">Correo electrónico</label>
+                        <label for="correo">Correo electrónico *</label>
                         <input type="email" id="correo" name="correo" maxlength="100" required>
                         <small class="error" data-error-for="correo"></small>
                     </div>
 
                     <div class="campo">
-                        <label for="tipoUsuario">Tipo de usuario</label>
-                        <select id="tipoUsuario" name="tipoUsuario" required>
-                            <option value="">Seleccione</option>
-                            <option value="Administrador">Administrador</option>
-                            <option value="Cliente">Cliente</option>
-                            <option value="Vendedor">Vendedor</option>
-                        </select>
-                        <small class="error" data-error-for="tipoUsuario"></small>
-                    </div>
-
-                    <div class="campo">
-                        <label for="region">Región</label>
+                        <label for="region">Región *</label>
                         <select id="region" name="region" required>
                             <option value="">Seleccione una región</option>
                         </select>
@@ -58,7 +47,7 @@
                     </div>
 
                     <div class="campo">
-                        <label for="comuna">Comuna</label>
+                        <label for="comuna">Comuna *</label>
                         <select id="comuna" name="comuna" required>
                             <option value="">Seleccione una comuna</option>
                         </select>
@@ -66,14 +55,20 @@
                     </div>
 
                     <div class="campo campo-completo">
-                        <label for="direccion">Dirección</label>
+                        <label for="direccion">Dirección * </label>
                         <input type="text" id="direccion" name="direccion" maxlength="300" required>
                         <small class="error" data-error-for="direccion"></small>
                     </div>
+
+                    <div class="campo">
+                        <label for="password">Contraseña * <p>(4-10 caracteres)</p></label>
+                        <input type="password" id="password" name="password" minlength="4" maxlength="10" required>
+                        <small class="error" data-error-for="password"></small>
+                    </div>
                 </div>
 
-                <button type="submit" class="boton">Registrar usuario</button>
-                <p id="mensaje-registro-cliente" class="mensaje-exito"></p>
+                <button type="submit" class="boton">Registrate </button>
+                <p id="mensaje-nuevo-usuario" class="mensaje-exito"></p>
             </form>
         </section>
     </main>
