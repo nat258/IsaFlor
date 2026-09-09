@@ -31,14 +31,20 @@ async function inicializarComponentes() {
                 logo.src = new URL('imagenes/logo.webp', raiz).href;
             }
             document.body.prepend(header);
-        }
-        if (!document.querySelector('footer')) {
+
+            }
+            if (!document.querySelector('footer')) {
             const footer = document.createRange()
                 .createContextualFragment(footerHtml)
                 .firstElementChild;
 
+            footer.querySelectorAll('img[data-src]').forEach((imagen) => {
+                imagen.src = new URL(imagen.dataset.src, raiz).href;
+            });
+
             document.body.appendChild(footer);
-        }
+}
+
     } catch (error) {
         console.error(error);
     }
@@ -113,42 +119,48 @@ function inicializarLogin() {
         limpiarErrores(form);
 
         let valido = true;
-        const correo = document.getElementById('login-correo').value;
+
+        const correo = document.getElementById('login-correo').value.trim().toLowerCase();
         const password = document.getElementById('login-password').value.trim();
+        const mensaje = document.getElementById('mensaje-login');
 
         if (!correo) {
-            mostrarError('login-correo','El correo es obligatorio.');
+            mostrarError('login-correo', 'El correo es obligatorio.');
             valido = false;
         } else if (correo.length > 100 || !correoValido(correo)) {
-            mostrarError('login-correo','Ingresa un correo valido con dominio permitido.');
+            mostrarError('login-correo', 'Ingresa un correo válido con dominio permitido.');
             valido = false;
         }
 
         if (!password) {
-            mostrarError('login-password','La contrasena es obligatoria.');
+            mostrarError('login-password', 'La contraseña es obligatoria.');
             valido = false;
         } else if (password.length < 4 || password.length > 10) {
-            mostrarError('login-password','La contrasena debe tener entre 4 y 10 caracteres.');
+            mostrarError('login-password', 'La contraseña debe tener entre 4 y 10 caracteres.');
             valido = false;
         }
-
-        const mensaje = document.getElementById('mensaje-login');
 
         if (!valido) {
             mensaje.textContent = '';
             return;
         }
 
-        mensaje.textContent = 'Inicio de sesion validado correctamente.';
         const botonPresionado = event.submitter;
 
-        if (document.activeElement.id === 'btn-cliente') {
+        if (
+            botonPresionado.id === 'btn-cliente' && correo === 'cliente@gmail.com' && password === '1234'
+        ) {
             window.location.href = 'VistaCliente/inicioCliente.html';
+            return;
+        }
+        if (
+            botonPresionado.id === 'btn-admin' &&correo === 'admin@duoc.cl' &&password === 'admin123'
+        ) {
+            window.location.href = 'VistaAdmin/inicioAdmin.html';
+            return;
         }
 
-        if (document.activeElement.id === 'btn-admin') {
-            window.location.href = 'VistaAdmin/inicioAdmin.html';
-        }
+        mensaje.textContent = 'Correo, contraseña o tipo de usuario incorrecto.';
     });
 }
 
